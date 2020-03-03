@@ -3,34 +3,64 @@
 	import { onMount } from 'svelte';
 	const apiKey = "29c0f9d0-5b77-11ea-87eb-f9c17db1ada1"
 	const fetchUrl = `https://api.harvardartmuseums.org/object?person=35055&apikey=${apiKey}`
-	let artwork = []
+	const artwork = []
 	const pastels = []
 	const paintings = []
 	const sketches = []
 	const bronze = []
 	const misc = []
+	let count = 0
 
-	const getMoreArt = async (endpoint) => {
+	const getArt = async (endpoint) => {
 		if (endpoint) {
-			let res = await fetch(endpoint);
-			let jsonRes = await res.json();
-			artwork.push(...jsonRes.records)
-			getMoreArt(jsonRes.info.next)
-			console.log("artlist", artwork)
+				let res = await fetch(endpoint);
+				let jsonRes = await res.json();
+				artwork.push(...jsonRes.records)
+				getArt(jsonRes.info.next)
 			} else {
-			console.log("All artwork added")
-		}
-
+				console.log(artwork)
+				sortArt()
+			}
 	}
+	// const getMoreArt = async (endpoint) => {
+	// 	if (endpoint) {
+	// 			let res = await fetch(endpoint);
+	// 			let jsonRes = await res.json();
+	// 			artwork.push(...jsonRes.records)
+	// 			getMoreArt(jsonRes.info.next)
+	// 		} else {
+	// 			console.log(artwork)
+	// 			sortArt()
+	// 		}
+	// }
 
+	const sortArt = () => {
+		artwork.forEach(piece => {
+			switch (piece.classification) {
+	      case "Photographs":
+	        pastels.push({title: piece.title, image: piece.images, colors: piece.colors, date: piece.dateend});
+	      case "Drawings":
+	        sketches.push({title: piece.title, image: piece.images, colors: piece.colors, date: piece.dateend});
+	      case "Paintings":
+	        paintings.push({title: piece.title, image: piece.images, colors: piece.colors, date: piece.dateend});
+	      case "Sculpture":
+	        bronze.push({title: piece.title, image: piece.images, colors: piece.colors, date: piece.dateend});
+	      default:
+	        misc.push({title: piece.title, image: piece.images, colors: piece.colors, date: piece.dateend});
+    	}
+		})
+	}
+	
 	onMount(async () => {
-		console.log('Halloooo!!!')
-		const res = await fetch(fetchUrl);
-		const jsonRes = await res.json();
-		artwork = jsonRes.records
-		console.log("info", jsonRes.info.next)
-		getMoreArt(jsonRes.info.next)
+		getArt(fetchUrl)
 	});
+	// onMount(async () => {
+	// 	const res = await fetch(fetchUrl);
+	// 	const jsonRes = await res.json();
+	// 	artwork.push(...jsonRes.records)
+	// 	await getMoreArt(jsonRes.info.next)
+	// });
+
 </script>
 
 <main>
