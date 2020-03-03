@@ -4,12 +4,13 @@
 	const apiKey = "29c0f9d0-5b77-11ea-87eb-f9c17db1ada1"
 	const fetchUrl = `https://api.harvardartmuseums.org/object?person=35055&apikey=${apiKey}`
 	const artwork = []
-	const pastels = []
+	const photos = []
 	const paintings = []
 	const sketches = []
 	const bronze = []
 	const misc = []
 	let count = 0
+	let current = misc
 
 	const getArt = async (endpoint) => {
 		if (endpoint) {
@@ -38,7 +39,7 @@
 		artwork.forEach(piece => {
 			switch (piece.classification) {
 	      case "Photographs":
-	        pastels.push({title: piece.title, image: piece.images, colors: piece.colors, date: piece.dateend});
+	        photos.push({title: piece.title, image: piece.images, colors: piece.colors, date: piece.dateend});
 	      case "Drawings":
 	        sketches.push({title: piece.title, image: piece.images, colors: piece.colors, date: piece.dateend});
 	      case "Paintings":
@@ -50,7 +51,11 @@
     	}
 		})
 	}
-	
+
+	const chooseCurrentMedium = (medium) => {
+		current = medium
+	}
+
 	onMount(async () => {
 		getArt(fetchUrl)
 	});
@@ -64,8 +69,24 @@
 </script>
 
 <main>
-	<h1>Welcome to the Degas Museum!</h1>
-	<p>It's all ponies and ballerinas, he's like an eight year old girl.  It's fantastic.</p>
+	<h1>Ponies and Ballerinas!</h1>
+	<p>Edgar Degas is like an eight-year-old girl.  It's fantastic.</p>
+	<nav>
+		<button class="nav-button" id="photos" on:click="{chooseCurrentMedium(photos)}">Photographs</button>
+		<button class="nav-button" id="drawings" on:click={chooseCurrentMedium(drawings)}>Drawings</button>
+		<button class="nav-button" id="paintings" on:click={chooseCurrentMedium(paintings)}>Paintings</button>
+		<button class="nav-button" id="bronze" on:click={chooseCurrentMedium(sketches)}>Sculptures</button>
+		<button class="nav-button" id="misc" on:click={chooseCurrentMedium(misc)}>Other</button>
+	</nav>
+	<section class="art-container">
+		{#each current as item}
+			<div class="art-card">
+				<img src="{item.images[0].baseimageurl}">
+				<h2 class="card-title">{item.title}</h2>
+				<p class="card-date">{item.date}</p>
+			</div>
+		{/each}
+	</section>
 </main>
 
 <style>
@@ -81,6 +102,20 @@
 		text-transform: uppercase;
 		font-size: 4em;
 		font-weight: 100;
+		background-color: pink;
+	}
+
+	.nav-button {
+		margin: 1em;
+		min-width: 200px;
+		height: 75px;
+		background-color: pink;
+	}
+
+	.art-container {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
 	}
 
 	@media (min-width: 640px) {
