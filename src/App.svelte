@@ -1,25 +1,41 @@
 <script>
 	export let name;
-	import { onMount } from "svelte"
-
-	const apiKey = ""
-	const url = `https://api.harvardartmuseums.org/color?apikey=${apiKey}`
+	import { onMount } from 'svelte';
+	const apiKey = "29c0f9d0-5b77-11ea-87eb-f9c17db1ada1"
+	const fetchUrl = `https://api.harvardartmuseums.org/object?person=35055&apikey=${apiKey}`
+	let artwork = []
 	const pastels = []
 	const paintings = []
 	const sketches = []
 	const bronze = []
 	const misc = []
 
-	onMount(async function() {
-		const response = await fetch(url)
-		const jsonResponse = await response.json()
+	const getMoreArt = async (endpoint) => {
+		if (endpoint) {
+			let res = await fetch(endpoint);
+			let jsonRes = await res.json();
+			artwork.push(...jsonRes.records)
+			getMoreArt(jsonRes.info.next)
+			console.log("artlist", artwork)
+			} else {
+			console.log("All artwork added")
+		}
 
-	})
+	}
+
+	onMount(async () => {
+		console.log('Halloooo!!!')
+		const res = await fetch(fetchUrl);
+		const jsonRes = await res.json();
+		artwork = jsonRes.records
+		console.log("info", jsonRes.info.next)
+		getMoreArt(jsonRes.info.next)
+	});
 </script>
 
 <main>
-	<h1>Hello {name}!</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
+	<h1>Welcome to the Degas Museum!</h1>
+	<p>It's all ponies and ballerinas, he's like an eight year old girl.  It's fantastic.</p>
 </main>
 
 <style>
