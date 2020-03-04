@@ -1,93 +1,42 @@
-*Looking for a shareable component template? Go here --> [sveltejs/component-template](https://github.com/sveltejs/component-template)*
-
----
-
-# svelte app
-
-This is a project template for [Svelte](https://svelte.dev) apps. It lives at https://github.com/sveltejs/template.
-
-To create a new project based on this template using [degit](https://github.com/Rich-Harris/degit):
-
-```bash
-npx degit sveltejs/template svelte-app
-cd svelte-app
-```
 
 *Note that you will need to have [Node.js](https://nodejs.org) installed.*
 
+# Svelte Paintings (aka Ponies and Ballerinas)
 
-## Get started
+Svelte paintings is a Svelte app the pulls from the [Harvard Art Museum API](https://github.com/harvardartmuseums/api-docs).
 
-Install the dependencies...
+This app specifically pulls the works of Edgar Degas, and sorts them by classification, which translates to type of work.
 
-```bash
-cd svelte-app
-npm install
-```
+Click a button, and see all works by Degas of that classification.  Scroll sideways to mimic the experience of walking through a museum.
 
-...then start [Rollup](https://rollupjs.org):
+## Created by:
 
-```bash
-npm run dev
-```
+- [Allison McCarthy](https://github.com/spaceplesiosaur)
 
-Navigate to [localhost:5000](http://localhost:5000). You should see your app running. Edit a component file in `src`, save it, and reload the page to see your changes.
+## Learning goals
 
-By default, the server will only respond to requests from localhost. To allow connections from other computers, edit the `sirv` commands in package.json to include the option `--host 0.0.0.0`.
+To demonstrate:
 
+Professional workflow
+Front-end engineering knowledge learned throughout time at Turing
+The ability to use a concept/library/framework that you have not been taught explicitly at Turing
 
-## Building and running in production mode
+## Try out locally
 
-To create an optimised version of the app:
+Clone or fork this repo and then cd into it.  
 
-```bash
-npm run build
-```
+run ```npm install```
 
-You can run the newly built app with `npm run start`. This uses [sirv](https://github.com/lukeed/sirv), which is included in your package.json's `dependencies` so that the app will work when you deploy to platforms like [Heroku](https://heroku.com).
+run ```npm run dev```
 
-
-## Single-page app mode
-
-By default, sirv will only respond to requests that match files in `public`. This is to maximise compatibility with static fileservers, allowing you to deploy your app anywhere.
-
-If you're building a single-page app (SPA) with multiple routes, sirv needs to be able to respond to requests for *any* path. You can make it so by editing the `"start"` command in package.json:
-
-```js
-"start": "sirv public --single"
-```
+Navigate to [localhost:5000](http://localhost:5000). You should see the app running.
 
 
-## Deploying to the web
+## Built With:
+- Svelt
+- Javascript
+- Jest
+- HTML
+- CSS
 
-### With [now](https://zeit.co/now)
-
-Install `now` if you haven't already:
-
-```bash
-npm install -g now
-```
-
-Then, from within your project folder:
-
-```bash
-cd public
-now deploy --name my-project
-```
-
-As an alternative, use the [Now desktop client](https://zeit.co/download) and simply drag the unzipped project folder to the taskbar icon.
-
-### With [surge](https://surge.sh/)
-
-Install `surge` if you haven't already:
-
-```bash
-npm install -g surge
-```
-
-Then, from within your project folder:
-
-```bash
-npm run build
-surge public my-project.surge.sh
-```
+![Demo](https://media.giphy.com/media/YooMG1y9GS6hK3FABA/giphy.gif)
