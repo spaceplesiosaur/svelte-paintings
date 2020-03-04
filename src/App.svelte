@@ -19,13 +19,7 @@
 				artwork.push(...jsonRes.records)
 				getArt(jsonRes.info.next)
 			} else {
-				console.log("artwork", artwork)
 				sortArt()
-				console.log("photos", photos)
-				console.log("paintings", paintings)
-				console.log("sketches", sketches.map(sketch => sketch.image))
-				console.log("bronze", bronze)
-				console.log("misc", misc)
 			}
 	}
 
