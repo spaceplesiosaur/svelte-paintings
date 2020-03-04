@@ -39,4 +39,4 @@ Navigate to [localhost:5000](http://localhost:5000). You should see the app runn
 - HTML
 - CSS
 
-![Demo](https://media.giphy.com/media/YooMG1y9GS6hK3FABA/giphy.gif)
+![Demo](https://media.giphy.com/media/JrpU5wjrbiK1TdJ9BF/giphy.gif)
