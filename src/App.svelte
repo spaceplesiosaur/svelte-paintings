@@ -76,7 +76,7 @@
 
 <main>
 	<h1>Ponies and Ballerinas!</h1>
-	<p>Edgar Degas is like an eight-year-old girl.  It's fantastic.</p>
+	<p class="subheader">Edgar Degas is like an eight-year-old girl.  It's fantastic.</p>
 	<nav>
 		<button class="nav-button" id="photos" on:click="{chooseCurrentMedium(photos)}">Photographs</button>
 		<button class="nav-button" id="sketches" on:click={chooseCurrentMedium(sketches)}>Drawings</button>
@@ -84,8 +84,8 @@
 		<button class="nav-button" id="bronze" on:click={chooseCurrentMedium(bronze)}>Sculptures</button>
 		<button class="nav-button" id="misc" on:click={chooseCurrentMedium(misc)}>Other</button>
 	</nav>
+	<h3 class="instructions">Click a button to see Degas's artwork by medium, then journey through the gallery...</h3>
 	<div class="art-container">
-		<p class="instructions">Click a button to see Degas's artwork by medium</p>
 		{#each currentMedium as item}
 			<div class="art-card">
 				<img class="card-image" src="{dealWithImages(item.image)}">
@@ -97,42 +97,73 @@
 </main>
 
 <style>
+
 	main {
 		text-align: center;
 		padding: 1em;
 		max-width: 240px;
 		margin: 0 auto;
+		background-color: #FAF7F4;
+		min-height: 800px;
 	}
 
 	h1 {
-		color: #ff3e00;
+		color: #2b2d2f;
 		text-transform: uppercase;
 		font-size: 4em;
 		font-weight: 100;
-		background-color: pink;
+		background-color: #f6e1e6;
+	}
+
+	.subheader {
+		font-size: 2em;
 	}
 
 	.nav-button {
 		margin: 1em;
 		min-width: 200px;
 		height: 75px;
-		background-color: pink;
+		background-color: #f6e1e6;
+		color: #2b2d2f;
+		font-size: 1.5em;
+		border: 2px solid #8AB9D3
 	}
 
 	.art-container {
 		display: flex;
-		flex-direction: row;
-		flex-wrap: wrap;
-		background-color: lightblue;
+		flex-flow: column wrap;
+		background-color: #8AB9D3;
+		justify-content: center;
+		max-height: 1000px;
+  	margin-left: -8px;
+		overflow-y: scroll;
+		overflow-x: inherit;
+	}
+	.art-card {
+  	margin: 10px;
+		border: 2px solid black;
+		background-color: #FAF7F4;
 	}
 	.instructions {
 		align-items: center;
 	}
 	.card-image {
-		width: 200px;
+		max-width: 250px;
+		overflow: scroll;
+		margin: 5px;
+		border: 2px solid black;
 	}
 	.card-title {
-		width: 200px;
+		max-width: 250px;
+		font-size: 1.5em;
+		align-items: center;
+		margin: 1px;
+	}
+
+	.card-date {
+		max-height: 100px;
+		font-size: 1em;
+		align-items: center;
 	}
 
 	@media (min-width: 640px) {
