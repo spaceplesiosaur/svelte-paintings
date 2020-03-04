@@ -137,6 +137,7 @@
   	margin: 10px;
 		border: 2px solid black;
 		background-color: #FAF7F4;
+		animation: drift 20s linear infinite;
 	}
 	.instructions {
 		align-items: center;
@@ -159,6 +160,15 @@
 		font-size: 1em;
 		align-items: center;
 	}
+
+	@-webkit-keyframes drift {
+			0% {
+				transform: translate(0%);
+			}
+			100% {
+				transform: translate(-1000%);
+			}
+    }
 
 	@media (min-width: 640px) {
 		main {
