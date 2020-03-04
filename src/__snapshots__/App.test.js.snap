@@ -49,51 +49,51 @@ Object {
   "container": <body>
     <div>
       <main
-        class="svelte-1fdacft"
+        class="svelte-1t76zzn"
       >
         <h1
-          class="svelte-1fdacft"
+          class="svelte-1t76zzn"
         >
           Ponies and Ballerinas!
         </h1>
          
         <p
-          class="subheader svelte-1fdacft"
+          class="subheader svelte-1t76zzn"
         >
           Edgar Degas is like an eight-year-old girl.  It's fantastic.
         </p>
          
         <nav>
           <button
-            class="nav-button svelte-1fdacft"
+            class="nav-button svelte-1t76zzn"
             id="photos"
           >
             Photographs
           </button>
            
           <button
-            class="nav-button svelte-1fdacft"
+            class="nav-button svelte-1t76zzn"
             id="sketches"
           >
             Drawings
           </button>
            
           <button
-            class="nav-button svelte-1fdacft"
+            class="nav-button svelte-1t76zzn"
             id="paintings"
           >
             Paintings
           </button>
            
           <button
-            class="nav-button svelte-1fdacft"
+            class="nav-button svelte-1t76zzn"
             id="bronze"
           >
             Sculptures
           </button>
            
           <button
-            class="nav-button svelte-1fdacft"
+            class="nav-button svelte-1t76zzn"
             id="misc"
           >
             Other
@@ -101,13 +101,13 @@ Object {
         </nav>
          
         <h3
-          class="instructions svelte-1fdacft"
+          class="instructions svelte-1t76zzn"
         >
           Click a button to see Degas's artwork by medium, then journey through the gallery...
         </h3>
          
         <div
-          class="art-container svelte-1fdacft"
+          class="art-container svelte-1t76zzn"
         />
       </main>
     </div>
